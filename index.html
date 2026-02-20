@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disney Virtual Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="view-map" class="view">
+    <div class="map-container">
+      <div class="map-title">SHOP MAP</div>
+      <div class="map-bg">
+        <button class="map-spot spot-nui" onclick="showShelf('ぬいぐるみ')">
+          <img src="icon_nui.png" alt="ぬいぐるみ" onerror="this.style.display='none'">
+          <span>ぬいぐるみ</span>
+        </button>
+
+        <button class="map-spot spot-key" onclick="showShelf('キーホルダー')">
+          <img src="icon_key.png" alt="キーホルダー" onerror="this.style.display='none'">
+          <span>キーホルダー</span>
+        </button>
+
+        <button class="map-spot spot-acc" onclick="showShelf('カチューシャ')">
+          <img src="icon_acc.png" alt="カチューシャ" onerror="this.style.display='none'">
+          <span>カチューシャ</span>
+        </button>
+
+        <div class="map-cashier">Cashier</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-shelf" class="view" style="display:none;">
+    <header class="view-header">
+      <button class="back-btn" onclick="showMap()">← Map</button>
+      <h2 id="shelf-title">カテゴリ名</h2>
+      <div class="home-icon" onclick="showMap()" style="cursor:pointer;">🏠</div>
+    </header>
+    <div class="shelf-container">
+      <div class="shelf-banner">New Arrival</div>
+      <div id="shelf-items" class="shelf-grid"></div>
+    </div>
+  </div>
+
+  <div id="view-detail" class="view" style="display:none;">
+    <div class="detail-overlay-content">
+      <button class="slide-btn prev" id="prev-detail">〈</button>
+
+      <div class="detail-card">
+        <button class="close-detail" onclick="backToShelf()">×</button>
+        <div id="detail-message" class="detail-msg"></div>
+
+        <h2 id="product-name">商品名</h2>
+        <div class="img-frame">
+          <img id="product-img" src="" alt="商品画像">
+        </div>
+        <div class="price-tag">¥<span id="product-price">0</span></div>
+        <div class="quantity">
+          <button id="minus">－</button>
+          <span id="count">1</span>
+          <button id="plus">＋</button>
+        </div>
+        <button id="add-to-cart" class="add-cart-btn">Add to Cart</button>
+      </div>
+
+      <button class="slide-btn next" id="next-detail">〉</button>
+    </div>
+  </div>
+
+  <div class="footer-bar-container">
+    <div class="footer-bar" id="cart-status-btn">
+      <div class="footer-info">🛒 <span id="cart-total">0</span> / ¥<span id="cart-price">0</span></div>
+      <button class="checkout-btn">Go to Cashier</button>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h3>🛒 Cart List</h3>
+      <ul id="cart-items"></ul>
+      <div class="modal-footer-btns">
+        <button id="close-cart">閉じる</button>
+        <button id="order-confirm" class="order-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="order-complete" class="order-complete-overlay" style="display:none;">
+    <div class="complete-card">
+      <h1>🎉 Thank you!</h1>
+      <p>注文を承りました。</p>
+      <button class="return-btn" onclick="location.reload()">Back to Map</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
